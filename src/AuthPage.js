@@ -1,6 +1,8 @@
+// AuthPage.js
 import React, { useState } from 'react';
-import { auth } from './firebase';
+import { auth, realtimeDB } from './firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { ref, set } from 'firebase/database';
 import './AuthPage.css';
 
 const AuthPage = () => {
@@ -18,7 +20,13 @@ const AuthPage = () => {
 
     const handleRegister = async () => {
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
+            const credential = await createUserWithEmailAndPassword(auth, email, password);
+            if (credential && credential.user) {
+                // Store user email in Realtime Database
+                await set(ref(realtimeDB, `users/${credential.user.uid}`), {
+                    email: credential.user.email,
+                });
+            }
         } catch (err) {
             setError(err.message);
         }
