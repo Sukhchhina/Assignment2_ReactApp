@@ -1,6 +1,5 @@
-// src/App.js
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { auth } from './firebase';
 import AuthPage from './AuthPage';
 import Dashboard from './Dashboard';
@@ -15,18 +14,20 @@ const App = () => {
         return unsubscribe;
     }, []);
 
-    return ( <
-        Router >
-        <
-        div > {
-            user ? ( <
-                Dashboard / >
-            ) : ( <
-                AuthPage / >
-            )
-        } <
-        /div> <
-        /Router>
+    return (
+        <Router>
+            <div>
+                {user ? (
+                    <Routes>
+                        <Route path="/*" element={<Dashboard />} />
+                    </Routes>
+                ) : (
+                    <Routes>
+                        <Route path="/*" element={<AuthPage />} />
+                    </Routes>
+                )}
+            </div>
+        </Router>
     );
 };
 

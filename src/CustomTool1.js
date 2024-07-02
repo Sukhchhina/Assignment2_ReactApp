@@ -17,17 +17,15 @@ const CustomTool1 = () => {
         }
     };
 
-    return ( <
-        div >
-        <
-        h2 > Calculator < /h2> <
+    return ( <div>
+        <h2> Calculator </h2> <
         input type = "text"
         value = { input }
         onChange = { handleInput }
-        /> <
-        button onClick = { calculateResult } > Calculate < /button> <
-        p > Result: { result } < /p> <
-        /div>
+        /> 
+        <button onClick = { calculateResult } > Calculate </button> 
+        <p> Result: { result } </p> 
+        </div>
     );
 };
 

@@ -1,31 +1,33 @@
-// src/UserListWidget.js
+// UserListWidget.js
 import React, { useEffect, useState } from 'react';
-import { firestore } from './firebase';
+import { auth } from './firebase';
+import './UserListWidget.css';
 
 const UserListWidget = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        const unsubscribe = firestore.collection('users').onSnapshot((snapshot) => {
-            const usersData = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }));
-            setUsers(usersData);
-        });
-        return unsubscribe;
+        const fetchUsers = async () => {
+            try {
+                const userList = await auth.listUsers();  
+                setUsers(userList.users);
+            } catch (error) {
+                console.error('Error fetching user list:', error);
+            }
+        };
+
+        fetchUsers();
     }, []);
 
-    return ( <
-        div >
-        <
-        h2 > User List < /h2> <ul>  {
-            users.map((user) => ( <
-                li key = { user.id } > { user.email } < /li>
-            ))
-        } <
-        /ul>  <
-        /div>
+    return (
+        <div className="user-list-widget">
+            <h2>Registered Users</h2>
+            <ul>
+                {users.map((user) => (
+                    <li key={user.uid}>{user.email}</li>
+                ))}
+            </ul>
+        </div>
     );
 };
 

@@ -1,0 +1,46 @@
+/* UserListWidget.css */
+
+.user-list-widget {
+    background-color: #282c34;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 20px;
+}
+
+.user-list-widget h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.user-list-widget ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.user-list-widget li {
+    margin-bottom: 5px;
+    padding: 8px 12px;
+    background-color: #3a3f4b;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.user-list-widget li:hover {
+    background-color: #4a4f5b;
+}
+
+.user-list-widget li::before {
+    content: '\2022'; /* Bullet character */
+    color: #ffffff;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.user-list-widget li:last-child {
+    margin-bottom: 0;
+}

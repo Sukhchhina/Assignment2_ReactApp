@@ -2,7 +2,7 @@
 import React from 'react';
 
 const SubPage2 = () => {
-    return <div > SubPage 2 Content < /div>;
+    return <div > SubPage 2 Content </div>;
 };
 
 export default SubPage2;

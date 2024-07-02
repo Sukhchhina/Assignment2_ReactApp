@@ -1,0 +1,25 @@
+/* CalendarWidget.css */
+
+.react-calendar {
+    width: 100%;
+    max-width: 400px; /* Adjust width as per your layout */
+    background: #1f1f1f;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.react-calendar__navigation {
+    background: #6200ea; /* Navigation background color */
+    color: #ffffff;
+}
+
+.react-calendar__tile {
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+.react-calendar__tile--active {
+    background: #3700b3; /* Active date background color */
+    color: #ffffff;
+}
